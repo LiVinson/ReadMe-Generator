@@ -61,4 +61,12 @@ inquirer.prompt([
     const text = `
         <h1 align="center">Welcome to ${projectName} 👋</h1>
     
-`})
+`}).catch(error => {
+        if (error.isTtyError) {
+            //prompt couldn't be rendered in the current environment
+            console.log("not in this environment boss");
+        } else {
+            //something else
+            console.log("Houston we have a bigger problem")
+        }
+    });
