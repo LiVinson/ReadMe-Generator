@@ -1,15 +1,17 @@
-const fs = require("fs");
 const inquirer = require("inquirer");
+const fs = require("fs");
 const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptObj() {
+    console.log("before return")
     return inquirer.prompt([
         {
             type: "input",
+            title: "title",
             message: "Enter your Title:",
-            title: "title"
+        
         },
         {
             type: "input",
@@ -20,6 +22,11 @@ function promptObj() {
             type: "input",
             message: "Enter your Project Description",
             projectDescription: "projectDescription"
+        },
+        {
+            type: "input",
+            message: "Enter Requirements Here",
+            requirements: "requirements"
         },
         {
             type: "input",
@@ -53,8 +60,13 @@ function promptObj() {
         },
         {
             type: "input",
-            message: "Enter Questions here:",
-            questions: "questions"
+            message: "Enter your Github UserName",
+            github: "github username"
+        },
+        {
+            type: "input",
+            message: "Enter your Email Address",
+            email: "email address"
         }
 
     ])
@@ -62,9 +74,10 @@ function promptObj() {
 
 // function for generating the text
 
-function generateText(answers) {
+function generateText(x) {
+    console.log("in generate text")
     return `
-    
+    ${x.title}
         Table of Contents
 
         * Requirements
@@ -75,21 +88,32 @@ function generateText(answers) {
         *Test
         *Questions
 
+        Requirements: ${x.requirements}
+
+        Installation directions: ${x.installation}
+
+        Usage: ${x.usage}
+
+        License: ${x.license}
+
+        Contributing: ${x.contributing}
+
+        Test: ${x.test}
+
+        For Questions Contact: ${'github.com/' + x.github} or reach me at my Email address : ${x.email}
+
 
 
     `
 }
-
-           // .then((title) => {
-//             const text = `
-//         <h1 align="center">Welcome to ${projectName} 👋</h1>
-    
-// `}).catch(error => {
-//                 if (error.isTtyError) {
-//                     //prompt couldn't be rendered in the current environment
-//                     console.log("not in this environment boss");
-//                 } else {
-//                     //something else went wrong
-//                     console.log("Houston we have a bigger problem")
-//                 }
-//             })
+promptObj()
+    .then(function(x) {
+        const text = generateText(x);
+        return writeFileAsync("README.md", text)
+    })
+    .then(function() {
+        console.log("Success Houston")
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
