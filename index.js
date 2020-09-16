@@ -57,7 +57,29 @@ function promptObj() {
             questions: "questions"
         }
 
-])}
+    ])
+}
+
+// function for generating the text
+
+function generateText(answers) {
+    return `
+    
+        Table of Contents
+
+        * Requirements
+        * Installation
+        * Usage
+        * License
+        *Contributing
+        *Test
+        *Questions
+
+
+
+    `
+}
+
            // .then((title) => {
 //             const text = `
 //         <h1 align="center">Welcome to ${projectName} 👋</h1>
