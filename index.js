@@ -3,71 +3,120 @@ const inquirer = require("inquirer");
 const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
-
+// creating the prompt obj
 function promptObj() {
     return inquirer.prompt([
         {
             type: "input",
             message: "Enter your Title:",
-            title: "title"
+            name: "title"
         },
         {
             type: "input",
             message: "Enter your Project Name",
-            projectName: "projectName"
+            name: "projectName"
         },
         {
             type: "input",
             message: "Enter your Project Description",
-            projectDescription: "projectDescription"
+            name: "projectDescription"
         },
         {
             type: "input",
             message: "Enter your Table of Contents:",
-            tableOfContent: "tableOfContents"
+            name: "tableOfContents"
         },
         {
             type: "input",
             message: "Enter your Installation Process",
-            installation: "installation"
+            name: "installation"
         },
         {
             type: "input",
             message: "Enter the Usage here",
-            usage: "usage"
+            name: "usage"
         },
         {
-            type: "input",
-            message: "License:",
-            license: "license"
+            type: "checkbox",
+            message: "Select your License",
+            choices: [
+                "Mit",
+                "ISC",
+                "Apache"
+            ],
+            name: "license"
         },
         {
             type: "input",
             message: "Contributing",
-            contributing: "contributing"
+            name: "contributing"
         },
         {
             type: "input",
-            message: "Enter Test Here:",
-            test: "test"
+            message: "Email:",
+            name: "email"
         },
         {
             type: "input",
-            message: "Enter Questions here:",
-            questions: "questions"
+            message: "Github Link:",
+            name: "github"
         }
 
 ])}
-           // .then((title) => {
-//             const text = `
-//         <h1 align="center">Welcome to ${projectName} 👋</h1>
-    
-// `}).catch(error => {
-//                 if (error.isTtyError) {
-//                     //prompt couldn't be rendered in the current environment
-//                     console.log("not in this environment boss");
-//                 } else {
-//                     //something else went wrong
-//                     console.log("Houston we have a bigger problem")
-//                 }
-//             })
+// creates the readme file (x) is the response of the prompt being passed through
+function generateMarkdown(x) {
+    return `
+    ## ${x.title}
+
+    ## Table of Contents
+
+    - [Description](#description)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Contributing](#contributing)
+    - [Test](#test)
+    - [Credits](#credits)
+    - [License](#license)
+    - [Questions](#questions)
+
+
+    ## Description:
+    ![License](https://img.shields.io/badge/License-${x.license}-blue.svg "License Badge")
+
+        ${x.description}
+    ## Installation:
+        ${x.installation}
+    ## Usage: 
+        ${x.usage}
+    ## Contributing:
+        ${x.contributing}
+    ## Test 
+        ${x.test}
+    ## Credits
+        ${x.credits}
+    ## License
+        For more information on the License used, visit the link below.
+
+    - [License](https://opensource.org/licenses${x.license})
+
+    ## Questions
+        For any questions visit - ${x.github}
+        Or shoot me an email at - ${x.email}
+
+    `;
+}
+// function to create variabes for the functions
+// also calls the write file function and passes it the variables for the functions
+async function start(){
+    try {
+        const x = await promptObj();
+        const readMe = generateMarkdown(x);
+
+        await writeFileAsync("README.md", readMe);
+        console.log("yeet");
+    } catch (err) {
+        console.log("Houston we have a problem", err)
+    }
+};
+// initializing the function
+start();
