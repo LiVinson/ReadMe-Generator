@@ -58,7 +58,7 @@ function promptObj() {
         },
         {
             type: "input",
-            message: "Github Link:",
+            message: "Github",
             name: "github"
         }
 
@@ -101,9 +101,8 @@ function generateMarkdown(x) {
 
     ## Questions
         For any questions visit - ${x.github}
-        Or shoot me an email at - ${x.email}
+        Or shoot me an email at - ${x.email}`
 
-    `;
 }
 // function to create variabes for the functions
 // also calls the write file function and passes it the variables for the functions

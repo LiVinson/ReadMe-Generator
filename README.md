@@ -1,5 +1,5 @@
 
-    ## ReadMe Generator
+   ` ## ReadMe Generator
 
     ## Table of Contents
 
@@ -14,26 +14,24 @@
 
 
     ## Description:
-    ![License](https://img.shields.io/badge/License-Mit-blue.svg "License Badge")
+    ![License](https://img.shields.io/badge/License--blue.svg "License Badge")
 
         undefined
     ## Installation:
-        Run in the Command Line
+        Install via the command line
     ## Usage: 
-        This will be used to generate a README.me
+        
     ## Contributing:
         Parker Manning
     ## Test 
-        
+        undefined
     ## Credits
         undefined
     ## License
         For more information on the License used, visit the link below.
 
-    - [License](https://opensource.org/licensesMit)
+    - [License](https://opensource.org/licenses)
 
     ## Questions
-        For any questions visit - undefined
-        Or shoot me an email at - undefined
-
-    
+        For any questions visit - https://github.com/ParkerM2
+        Or shoot me an email at - ParkerLmanning@hotmail.com`
