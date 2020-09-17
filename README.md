@@ -1,5 +1,5 @@
 
-   ` ## ReadMe Generator
+    ## ReadMe Generator
 
     ## Table of Contents
 
@@ -34,4 +34,4 @@
 
     ## Questions
         For any questions visit - https://github.com/ParkerM2
-        Or shoot me an email at - ParkerLmanning@hotmail.com`
+        Or shoot me an email at - ParkerLmanning@hotmail.com
