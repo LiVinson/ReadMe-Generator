@@ -1,4 +1,4 @@
-`
+
 ## ReadMe Generator
 
 ## Table of Contents
@@ -14,13 +14,13 @@
 
 
 ## Description:
-![License](https://img.shields.io/badge/License--blue.svg "License Badge")
+![License](https://img.shields.io/badge/License-Mit-blue.svg "License Badge")
 
     undefined
 ## Installation:
-    Install via the command line
+    To call the script, install and call 'node index.js' in the correct file location.
 ## Usage: 
-    
+    Creating Dynamic README.md files
 ## Contributing:
     Parker Manning
 ## Test 
@@ -30,8 +30,8 @@
 ## License
     For more information on the License used, visit the link below.
 
-- [License](https://opensource.org/licenses)
+- [License](https://opensource.org/licensesMit)
 
 ## Questions
     For any questions visit - https://github.com/ParkerM2
-    Or shoot me an email at - ParkerLmanning@hotmail.com`
+    Or shoot me an email at - ParkerLManning@hotmail.com
